@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pão & Afeto: pães, bolos e salgados feitos todos os dias.">
+  <title>Pão & Afeto | Padaria</title>
+  <style>
+    :root{--verde:#354638;--verde2:#263629;--creme:#f7f2e8;--papel:#fffdf8;--texto:#302b24;--suave:#71695d;--linha:#e4dbcc;--mostarda:#c18c48}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:85px}body{margin:0;background:var(--creme);color:var(--texto);font:16px/1.55 Arial,sans-serif}a{color:inherit}button,input,textarea{font:inherit}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #3675a5;outline-offset:3px}
+    .wrap{width:min(1080px,calc(100% - 40px));margin:auto}.header{position:sticky;top:0;z-index:5;background:var(--papel);border-bottom:1px solid var(--linha)}.bar{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none}.brand svg{width:43px;height:43px;flex:none}.brand strong{display:block;color:var(--verde);font: bold 1.35rem Georgia,serif}.brand small{display:block;color:var(--suave);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase}
+    nav{display:flex;gap:22px;align-items:center}nav a{text-decoration:none;color:var(--suave);font-size:.92rem;font-weight:700}nav a:hover{color:var(--mostarda)}.order-link,.btn{display:inline-block;padding:11px 17px;border:0;border-radius:5px;background:var(--verde);color:white;text-decoration:none;font-weight:700;cursor:pointer}.order-link:hover,.btn:hover{background:var(--verde2)}.menu{display:none;border:1px solid var(--linha);border-radius:5px;background:white;padding:8px 11px;color:var(--verde)}
+    .hero{background:var(--verde);color:white;padding:88px 0 92px}.hero-inner{max-width:700px}.eyebrow{color:#e7c58d;font-size:.78rem;font-weight:bold;letter-spacing:.14em;text-transform:uppercase}.hero h1{max-width:650px;margin:14px 0;font:500 clamp(2.6rem,6vw,4.6rem)/1.04 Georgia,serif}.hero p{max-width:560px;color:#e9e7df;font-size:1.08rem}.hero .btn{margin-top:10px;background:#e6c58f;color:var(--verde2)}.hero .btn:hover{background:#f0d6a9}
+    section{padding:65px 0}.heading{max-width:650px;margin:0 auto 32px;text-align:center}.heading h2,.about h2{margin:7px 0 10px;font:500 clamp(2rem,4vw,2.8rem)/1.1 Georgia,serif}.heading p,.about p{color:var(--suave)}.kicker{color:var(--mostarda);font-size:.76rem;font-weight:bold;letter-spacing:.13em;text-transform:uppercase}
+    .products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.product{padding:20px;background:var(--papel);border:1px solid var(--linha);border-radius:8px}.product .pic{height:120px;display:block;overflow:hidden;margin-bottom:14px;background:#eee6d7;border-radius:5px}.product .pic img{width:100%;height:100%;display:block;object-fit:cover}.product h3{margin:0 0 6px;font:600 1.3rem Georgia,serif}.product p{min-height:68px;margin:0 0 16px;color:var(--suave);font-size:.9rem}.add{width:100%;padding:10px;border:1px solid var(--verde);border-radius:4px;background:transparent;color:var(--verde);font-weight:bold;cursor:pointer}.add:hover,.add[aria-pressed=true]{background:var(--verde);color:white}
+    .order{background:#eee7da}.order-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:34px;align-items:start}.order-info p{color:var(--suave)}.panel{padding:24px;background:var(--papel);border:1px solid var(--linha);border-radius:8px}.panel-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--linha);padding-bottom:12px}.panel-head h3{margin:0;font:600 1.4rem Georgia,serif}.count{min-width:30px;padding:3px 9px;border-radius:20px;background:var(--verde);color:white;text-align:center;font-weight:bold}.cart{padding:12px 0}.empty{margin:4px 0;color:var(--suave);font-size:.92rem}.cart-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--linha)}.qty{display:flex;align-items:center;gap:9px}.qty button{width:28px;height:28px;border:1px solid var(--linha);border-radius:50%;background:white;color:var(--verde);font-weight:bold;cursor:pointer}.remove{border:0;background:none;color:#8a4938;text-decoration:underline;cursor:pointer;font-size:.82rem}
+    form{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:12px}.field{display:grid;gap:5px}.full{grid-column:1/-1}label{font-size:.85rem;font-weight:bold}input,textarea{width:100%;padding:10px;border:1px solid #d6cbbb;border-radius:4px;background:#fff;color:var(--texto)}textarea{min-height:76px;resize:vertical}.hint{color:var(--suave);font-size:.76rem}.form-actions{grid-column:1/-1;display:flex;align-items:center;gap:12px;flex-wrap:wrap}.status{grid-column:1/-1;min-height:22px;margin:0;color:var(--verde);font-size:.88rem}.status.error{color:#a33125}.result{display:none;margin-top:12px;padding:14px;background:#eef2eb;border:1px solid #c9d4c6;border-radius:5px}.result.show{display:block}.result pre{white-space:pre-wrap;font: .86rem/1.5 monospace}.copy{padding:8px 12px;border:1px solid var(--verde);border-radius:4px;background:white;color:var(--verde);font-weight:bold;cursor:pointer}
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.about-mark{min-height:250px;display:grid;place-items:center;background:#e9e0d0;border-radius:8px}.about-mark svg{width:150px;height:150px}.about p{margin-bottom:10px}.contact{padding:32px 0;background:var(--verde);color:white}.contact-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}.contact h2{margin:0;font:500 2rem Georgia,serif}.contact p{margin:5px 0 0;color:#e9e7df}.contact .btn{background:#e6c58f;color:var(--verde2)}footer{padding:20px 0;background:var(--verde2);color:#e8e3d8;font-size:.82rem}.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    @media(max-width:850px){.products{grid-template-columns:repeat(2,1fr)}.order-grid{grid-template-columns:1fr}.about{grid-template-columns:1fr}.about-mark{min-height:200px}}
+    @media(max-width:640px){.wrap{width:calc(100% - 30px)}.bar{min-height:68px}.menu{display:block}.nav{display:none;position:absolute;top:68px;left:0;right:0;padding:14px 20px;background:var(--papel);border-bottom:1px solid var(--linha)}.nav.open{display:grid;grid-template-columns:1fr 1fr;gap:14px}.order-link{display:none}.hero{padding:68px 0}.hero h1{font-size:2.8rem}section{padding:48px 0}.products{grid-template-columns:1fr}.product p{min-height:0}.contact-inner{align-items:flex-start;flex-direction:column}form{grid-template-columns:1fr}.full,.form-actions,.status{grid-column:auto}.panel{padding:17px}}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="wrap bar">
+      <a class="brand" href="#inicio" aria-label="Pão & Afeto, início">
+        <svg viewBox="0 0 48 48" role="img" aria-label="Ramo de trigo">
+          <circle cx="24" cy="24" r="22" fill="#354638"/>
+          <path d="M17 36C25 29 27 20 30 10M21 30l-8-4m11-2-7-7m11 2-5-8m-2 20 9-3m-5-7 8-5m-11 2 1-9" fill="none" stroke="#f5e8cf" stroke-width="2" stroke-linecap="round"/>
+          <path d="M13 26q-1-7 5-7 1 6-5 7Zm4-9q-1-7 5-7 1 6-5 7Zm8-1q-1-7 5-7 1 6-5 7Zm-1 11q2-7 8-5-1 6-8 5Zm-3 8q2-7 8-5-1 6-8 5Z" fill="#d8ad6b"/>
+        </svg>
+        <span><strong>Pão &amp; Afeto</strong><small>Padaria artesanal</small></span>
+      </a>
+      <button class="menu" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav class="nav" id="nav" aria-label="Menu principal">
+        <a href="#inicio">Início</a><a href="#cardapio">Cardápio</a><a href="#encomendas">Encomendas</a><a href="#sobre">A padaria</a>
+      </nav>
+      <a class="order-link" href="#encomendas">Fazer pedido</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="wrap hero-inner">
+        <span class="eyebrow">Pão quentinho todos os dias</span>
+        <h1>Da nossa fornada para a sua mesa.</h1>
+        <p>Pães, bolos e salgados preparados diariamente. Veja algumas opções do cardápio e monte sua encomenda.</p>
+        <a class="btn" href="#cardapio">Ver cardápio</a>
+      </div>
+    </section>
+
+    <section id="cardapio">
+      <div class="wrap">
+        <div class="heading"><span class="kicker">Nossas opções</span><h2>Cardápio</h2><p>Escolha os produtos que deseja incluir no pedido.</p></div>
+        <div class="products">
+          <article class="product"><div class="pic"><img src="https://img.criativodahora.com.br/homologacao/thumbs/2025/03/05/0195679a-31b5-7212-a2b2-8c74b332808b.jpg" alt="Pão francês dourado" loading="lazy"></div><h3>Pão francês</h3><p>Casca crocante e miolo macio. Feito ao longo do dia.</p><button class="add" data-item="Pão francês" aria-pressed="false">Adicionar</button></article>
+          <article class="product"><div class="pic"><img src="https://www.puratos.uy/content/dam/uruguay/2025/recetas/FECroissant4-1280x1280.jpeg/jcr%3Acontent/renditions/cq5dam.web.1280.1280.webp" alt="Croissant folhado e dourado" loading="lazy"></div><h3>Croissant</h3><p>Massa folhada, leve e dourada.</p><button class="add" data-item="Croissant" aria-pressed="false">Adicionar</button></article>
+          <article class="product"><div class="pic"><img src="https://static.wixstatic.com/media/09bc1b_445a0e2ffe734cd892542e9cd0c16a9d~mv2.png/v1/crop/x_215%2Cy_0%2Cw_1343%2Ch_887/fill/w_639%2Ch_422%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/cab0ee8f-8254-4718-909c-c4baa3c6b9a4.png" alt="Pães de queijo assados" loading="lazy"></div><h3>Pão de queijo</h3><p>Porção assada, ideal para acompanhar o café.</p><button class="add" data-item="Pão de queijo" aria-pressed="false">Adicionar</button></article>
+          <article class="product"><div class="pic"><img src="https://static.itdg.com.br/images/1200-675/0fd8c91ed32ee3ed3d368c30494cbeec/shutterstock-1495397810.jpg" alt="Fatia de bolo caseiro simples" loading="lazy"></div><h3>Bolo caseiro</h3><p>Bolo simples, macio e feito na casa.</p><button class="add" data-item="Bolo caseiro" aria-pressed="false">Adicionar</button></article>
+        </div>
+        <p id="live" class="hint" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="order" id="encomendas">
+      <div class="wrap order-grid">
+        <div class="order-info"><span class="kicker">Encomendas</span><h2>Monte seu pedido</h2><p>Adicione os itens, confira as quantidades e informe os dados para organizar sua encomenda.</p>
+        <div class="panel">
+          <div class="panel-head"><h3>Seu pedido</h3><span class="count" id="count">0</span></div>
+          <div class="cart" id="cart"><p class="empty">Nenhum produto adicionado.</p></div>
+          <form id="form">
+            <div class="field"><label for="name">Nome *</label><input id="name" name="name" required minlength="2" autocomplete="name" placeholder="Seu nome"></div>
+            <div class="field"><label for="phone">Telefone com DDD *</label><input id="phone" name="phone" type="tel" required placeholder="(11) 99999-9999"></div>
+            <div class="field full"><label for="date">Data para retirada *</label><input id="date" name="date" type="date" required></div>
+            <div class="field full"><label for="notes">Observações</label><textarea id="notes" name="notes" maxlength="250" placeholder="Alguma informação sobre o pedido? (opcional)"></textarea></div>
+            <div class="form-actions"><button class="btn" type="submit">Gerar resumo</button><a href="#cardapio">Voltar ao cardápio</a></div>
+            <p class="status" id="status" aria-live="polite"></p>
+          </form>
+          <div class="result" id="result"><strong>Resumo do pedido</strong><pre id="summary"></pre><button class="copy" id="copy" type="button">Copiar resumo</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="wrap about">
+        <div class="about-mark" aria-hidden="true">
+          <svg viewBox="0 0 160 160"><circle cx="80" cy="80" r="67" fill="#354638"/><path d="M60 119c27-25 30-54 40-82M72 100l-25-14m31-13L57 51m38-1L80 25m-9 61 30-12m-19-18 26-19" fill="none" stroke="#f5e8cf" stroke-width="5" stroke-linecap="round"/><path d="M47 86q-4-23 17-22 4 20-17 22Zm10-35q-4-23 17-22 4 20-17 22Zm23-3q-4-23 17-22 4 20-17 22Zm-5 36q7-22 27-15-5 20-27 15Zm-7 28q7-22 27-15-5 20-27 15Z" fill="#d8ad6b"/></svg>
+        </div>
+        <div class="about-copy"><span class="kicker">Pão &amp; Afeto</span><h2>Uma padaria de bairro</h2><p>Gostamos das coisas simples: pão saindo do forno, café passado na hora e produtos feitos com cuidado.</p><p>Nosso cardápio reúne opções para o café da manhã, o lanche da tarde e pequenas comemorações.</p></div>
+      </div>
+    </section>
+
+    <section class="contact" id="contato"><div class="wrap contact-inner"><div><h2>Vai precisar de uma encomenda?</h2><p>Escolha os produtos e organize seu pedido pela página.</p></div><a class="btn" href="#encomendas">Fazer pedido</a></div></section>
+  </main>
+  <footer><div class="wrap foot"><span>© <span id="year"></span> Pão &amp; Afeto</span><a href="#inicio">Voltar ao início ↑</a></div></footer>
+
+  <script>
+    const cart = {};
+    const cartBox = document.querySelector('#cart');
+    const count = document.querySelector('#count');
+    const status = document.querySelector('#status');
+    const result = document.querySelector('#result');
+    const date = document.querySelector('#date');
+    const today = new Date();
+    date.min = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+    document.querySelector('#year').textContent = new Date().getFullYear();
+
+    function updateCart() {
+      const total = Object.values(cart).reduce((sum, n) => sum + n, 0);
+      count.textContent = total;
+      cartBox.innerHTML = Object.keys(cart).length ? '' : '<p class="empty">Nenhum produto adicionado.</p>';
+      Object.entries(cart).forEach(([name, qty]) => {
+        const row = document.createElement('div');
+        row.className = 'cart-row';
+        row.innerHTML = `<strong>${name}</strong><span class="qty"><button type="button" data-change="-1" data-name="${name}" aria-label="Diminuir ${name}">−</button>${qty}<button type="button" data-change="1" data-name="${name}" aria-label="Aumentar ${name}">+</button><button class="remove" type="button" data-remove="${name}">Remover</button></span>`;
+        cartBox.append(row);
+      });
+      document.querySelectorAll('[data-item]').forEach(button => {
+        const selected = !!cart[button.dataset.item];
+        button.setAttribute('aria-pressed', selected);
+        button.textContent = selected ? 'Adicionado ✓' : 'Adicionar';
+      });
+    }
+
+    document.querySelectorAll('[data-item]').forEach(button => button.addEventListener('click', () => {
+      const name = button.dataset.item;
+      cart[name] = (cart[name] || 0) + 1;
+      updateCart();
+      result.classList.remove('show');
+      status.textContent = `${name} adicionado ao pedido.`;
+    }));
+
+    cartBox.addEventListener('click', event => {
+      const button = event.target.closest('button');
+      if (!button) return;
+      const name = button.dataset.name || button.dataset.remove;
+      if (button.dataset.remove) delete cart[name];
+      else cart[name] = (cart[name] || 0) + Number(button.dataset.change);
+      if (cart[name] <= 0) delete cart[name];
+      updateCart();
+      status.textContent = 'Pedido atualizado.';
+    });
+
+    document.querySelector('#form').addEventListener('submit', event => {
+      event.preventDefault();
+      const phone = document.querySelector('#phone');
+      const digits = phone.value.replace(/\D/g, '');
+      phone.setCustomValidity(digits.length >= 10 && digits.length <= 13 ? '' : 'Informe um telefone com DDD.');
+      if (!Object.keys(cart).length) { status.textContent = 'Adicione pelo menos um produto antes de continuar.'; status.className = 'status error'; return; }
+      if (!event.currentTarget.reportValidity()) return;
+      const items = Object.entries(cart).map(([name, qty]) => `- ${name}: ${qty}`).join('\n');
+      const text = `PEDIDO — PÃO & AFETO\nNome: ${document.querySelector('#name').value.trim()}\nTelefone: ${phone.value.trim()}\nRetirada: ${date.value.split('-').reverse().join('/')}\nItens:\n${items}\nObservações: ${document.querySelector('#notes').value.trim() || 'Nenhuma'}`;
+      document.querySelector('#summary').textContent = text;
+      result.classList.add('show');
+      status.className = 'status';
+      status.textContent = 'Resumo criado. Confira os dados antes de copiar.';
+    });
+
+    document.querySelector('#copy').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(document.querySelector('#summary').textContent); status.textContent = 'Resumo copiado.'; }
+      catch { status.textContent = 'Não foi possível copiar automaticamente. Selecione o texto e copie.'; }
+    });
+
+    const menu = document.querySelector('#menuBtn');
+    const nav = document.querySelector('#nav');
+    menu.addEventListener('click', () => {
+      const open = menu.getAttribute('aria-expanded') !== 'true';
+      menu.setAttribute('aria-expanded', open);
+      nav.classList.toggle('open', open);
+    });
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open'); menu.setAttribute('aria-expanded', 'false');
+    }));
+    updateCart();
+  </script>
+</body>
+</html>
